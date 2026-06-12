@@ -22,3 +22,8 @@ class CircleShape(pygame.sprite.Sprite):
     def update(self, dt: float) -> None:
         # must override
         pass
+
+    def collides_with(self, other) -> bool:
+        # check if the distance between the centers of the two circles is less than the sum of their radii
+        distance = self.position.distance_to(other.position)
+        return distance <= (self.radius + other.radius)
